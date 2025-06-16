@@ -119,7 +119,6 @@ class BaseCAM:
             target_category = np.argmax(output.cpu().data.numpy())
             print('default (pre) class', target_category)
         else:
-            # 检查 target_category 是否有效
             num_classes = output.shape[1]
             if target_category < 0 or target_category >= num_classes:
                 raise ValueError(
@@ -129,7 +128,6 @@ class BaseCAM:
         loss = self.get_loss(output, target_category)
 
         loss.backward(retain_graph=True)
-        # 取批次第一个样本 激活值和梯度列表里最后一个数组
         activations = self.activations_and_grads.activations[-1].cpu().data.numpy()[0, :]
         grads = self.activations_and_grads.gradients[-1].cpu().data.numpy()[0, :]
         weights = self.get_cam_weights(input_tensor, target_category, activations, grads)
