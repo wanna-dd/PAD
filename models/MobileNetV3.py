@@ -93,9 +93,6 @@ class MobileNetV3Small(nn.Module):
     def forward(self, x):
         out = self.conv1(x)
         out = self.bottlenecks(out)
-
-        # layer1_out = out
-
         out = self.conv2(out)
         out = self.conv3(out)
         out = self.bn(out)
@@ -105,14 +102,3 @@ class MobileNetV3Small(nn.Module):
         out = self.fc(out)
         return out
 
-
-
-
-if __name__ == '__main__':
-    model = MobileNetV3Small()
-    # print(model)
-
-    input = torch.ones((64, 1, 2127))
-    # output = model(input)
-    # print(output.shape)
-    summary(model, (1, 1, 2127))
