@@ -1,6 +1,8 @@
 **PAD**
-----------------------------------------------------------------------------------------------------------------------------------------
-Adaptive Feedback Cross-loop for Preserving and Robust Spectral Information Optimization without Spectral Processing in Few-shot Learning
+---------------------------------------------------------------------------------------------------------------------
+This repo contains demonstrations of using PAD to adaptively optimize  spectral information. 
+This repository is adapted from the codebase used to produce the results in the paper "Adaptive Feedback Cross-loop for Preserving and Robust Spectral Information Optimization without 
+Spectral Processing in Few-shot Learning".
 
 **Requirements**
 ----------------------------------------------------------------------------------------------------------------------------------------
