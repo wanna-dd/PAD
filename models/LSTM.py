@@ -22,11 +22,3 @@ def LSTM(**kwargs):
 
     return LSTMClassifier(1063, 64, 2, 4)
 
-if __name__ == '__main__':
-    model = LSTM()
-    # print(model)
-
-    input = torch.ones((10, 1, 2126))
-    output = model(input)
-    print(output.shape)
-    summary(model, (1, 1, 2126))
