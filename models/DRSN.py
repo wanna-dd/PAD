@@ -110,11 +110,3 @@ def DRSN_ResNet_6(**kwargs):
 
     return RSNet(BasicBlock, [1, 1])
 
-if __name__ == '__main__':
-    model = DRSN_ResNet_6()
-    # print(model)
-
-    input = torch.ones((500, 1, 2127))
-    output = model(input)
-    print(output.shape)
-    summary(model, (500, 1, 2127))
