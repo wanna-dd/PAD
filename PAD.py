@@ -40,8 +40,8 @@ def train(epoch):
 
         if not args.ads:
             inputs = inputs.reshape(args.batch_size, 1, 1000)
-            F_odd = inputs[:, :, 1::2]  # 提取奇数位置
-            F_even = inputs[:, :, ::2]  # 提取偶数位置
+            F_odd = inputs[:, :, 1::2]  
+            F_even = inputs[:, :, ::2] 
             min_length = min(F_odd.shape[2], F_even.shape[2])
             inputs_x = F_odd[:, :, :min_length]
             inputs_y = F_even[:, :, :min_length]
@@ -65,8 +65,8 @@ def train(epoch):
             inputs = inputs.reshape(args.batch_size * 2, 1, 1000)
             targets_ = targets[:batch_size // 2]
             inputs_half = inputs[:batch_size // 2]
-            F_odd = inputs_half[:, :, 1::2]  # 提取奇数位置
-            F_even = inputs_half[:, :, ::2]  # 提取偶数位置
+            F_odd = inputs_half[:, :, 1::2]  
+            F_even = inputs_half[:, :, ::2] 
             min_length = min(F_odd.shape[2], F_even.shape[2])
             inputs_x = F_odd[:, :, :min_length]
             inputs_y = F_even[:, :, :min_length]
@@ -83,8 +83,8 @@ def train(epoch):
 
             with torch.no_grad():
                 inputs_half_end = inputs[batch_size // 2:]
-                F_odd_end = inputs_half_end[:, :, 1::2]  # 提取奇数位置
-                F_even_end = inputs_half_end[:, :, ::2]  # 提取偶数位置
+                F_odd_end = inputs_half_end[:, :, 1::2] 
+                F_even_end = inputs_half_end[:, :, ::2] 
                 min_length = min(F_odd_end.shape[2], F_even_end.shape[2])
                 inputs_x_end = F_odd_end[:, :, :min_length]
                 inputs_y_end = F_even_end[:, :, :min_length]
@@ -137,8 +137,8 @@ def val(epoch):
             if use_cuda:
                 inputs, targets = inputs.cuda(), targets.cuda()
 
-            F_odd = inputs[:, :, 1::2]  # 提取奇数位置
-            F_even = inputs[:, :, ::2]  # 提取偶数位置
+            F_odd = inputs[:, :, 1::2]  
+            F_even = inputs[:, :, ::2]  
             min_length = min(F_odd.shape[2], F_even.shape[2])
             inputs_x = F_odd[:, :, :min_length]
             inputs_y = F_even[:, :, :min_length]
@@ -147,7 +147,7 @@ def val(epoch):
             outputs_y = net(inputs_y)
             loss_x = criterion(outputs_x, targets)
             loss_y = criterion(outputs_y, targets)
-            loss = (loss_x + loss_y) / 2  # 例如取平均
+            loss = (loss_x + loss_y) / 2  
 
             val_loss += loss.item()
             combined_outputs = outputs_x + outputs_y
@@ -199,17 +199,17 @@ def adjust_learning_rate(optimizer, epoch):
 
 if __name__ == '__main__':
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    data_dir = os.path.join(current_dir, 'clinical_isolates')
-    parser = argparse.ArgumentParser(description='PAD Training')
+    data_dir = os.path.join(current_dir, 'XXX')
+    parser = argparse.ArgumentParser(description='XXX')
     parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
     parser.add_argument('--resume', '-r', action='store_true', help='resume from checkpoint')
-    parser.add_argument('--model', default="MobileNetV3Small", type=str, help='DRSN_ResNet_6, LSTM, ResNet_6, MobileNetV3Small')
+    parser.add_argument('--model', default="XXX", type=str, help='DRSN_ResNet_6, LSTM, ResNet_6, MobileNetV3Small')
     parser.add_argument('--batch-size', default=10, type=int, help='batch size')
     parser.add_argument('--epoch', default=200, type=int, help='total epochs to run')
     parser.add_argument('--decay', default=1e-4, type=float, help='weight decay')
     parser.add_argument('--ngpu', default=1, type=int, help='number of gpu')
     parser.add_argument('--sgpu', default=0, type=int, help='gpu index (start)')
-    parser.add_argument('--dataset', default='clinical', type=str, help='the name for dataset')
+    parser.add_argument('--dataset', default='XXX', type=str, help='the name for dataset')
     parser.add_argument('--dataroot', default=data_dir, type=str, help='data directory')
     parser.add_argument('--saveroot', default=current_dir, type=str, help='save directory')
     parser.add_argument('--ads', '-ads', action='store_true', help='adding ads loss')
@@ -224,7 +224,7 @@ if __name__ == '__main__':
 
     args.ads = True
     if not args.ads:
-        ads = 'sd'
+        ads = 'Single loop'
         logdir = os.path.join(args.saveroot, args.dataset, args.model, ads)
     else:
         ads = 'PAD'
@@ -313,7 +313,7 @@ if __name__ == '__main__':
     }
     df = pd.DataFrame(data)
     df.to_excel(path, index=False)
-    print(f"数据已保存到 {path}")
+    print(f"Data is saved at {path}")
 
     x1 = range(start_epoch, args.epoch)
     x2 = range(start_epoch, args.epoch)
@@ -344,7 +344,6 @@ if __name__ == '__main__':
     plt.legend()
     plt.ylim(20, 105)
 
-    # 自动调整子图参数以给标题、标签留出空间
     plt.tight_layout()
     plt.savefig(os.path.join(logdir, f'{args.model}_ccuracy_loss_{ads}.jpg'))
     plt.show()
