@@ -60,11 +60,7 @@ class RSNet(nn.Module):
 
     def forward(self, x):
         x = self.conv1(x)
-
         x = self.layer1(x)
-
-        # layer1_out = x
-
         x = self.layer2(x)
         x = self.avg_pool(x)
         x = x.view(x.size(0), -1)
@@ -77,15 +73,3 @@ def ResNet_6(**kwargs):
 
     return RSNet(BasicBlock, [1, 1])
 
-
-#
-if __name__ == '__main__':
-    model = ResNet_6()
-    # print(model)
-
-    input = torch.ones((64, 1, 1000))
-    # output = model(input)
-    # # output = model(input)
-    # print(output.shape)
-    # # _, feature = model(input)
-    summary(model, (1, 1, 1000))
