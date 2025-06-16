@@ -1,10 +1,8 @@
 from .DRSN import *
-from .resnet import *
+from .ResNet import *
 from .LSTM import *
 from .MobileNetV3 import *
-from .resnet_teacher import *
-from .MobileNetV3_teacher import *
-from .DRSN_teacher import *
+
 
 
 # def load_model(name, num_classes=4, pretrained=False, **kwargs):
