@@ -24,8 +24,8 @@ def test(epoch):
             if use_cuda:
                 inputs, targets = inputs.cuda(), targets.cuda()
 
-            F_odd = inputs[:, :, 1::2]  # 提取奇数位置
-            F_even = inputs[:, :, ::2]  # 提取偶数位置
+            F_odd = inputs[:, :, 1::2] 
+            F_even = inputs[:, :, ::2]  
             min_length = min(F_odd.shape[2], F_even.shape[2])
             inputs_x = F_odd[:, :, :min_length]
             inputs_y = F_even[:, :, :min_length]
@@ -54,8 +54,8 @@ def test(epoch):
 if __name__ == '__main__':
     current_dir = os.path.dirname(os.path.abspath(__file__))
     data_dir = os.path.join(current_dir, 'data')
-    parser = argparse.ArgumentParser(description='CS-KD Training')
-    parser.add_argument('--model', default="DRSN_ResNet_6", type=str, help='DRSN_ResNet_6, LSTM, ResNet_6, MobileNetV3Small')
+    parser = argparse.ArgumentParser(description='xxx')
+    parser.add_argument('--model', default="xxx", type=str, help='DRSN_ResNet_6, LSTM, ResNet_6, MobileNetV3Small')
     parser.add_argument('--batch-size', default=100, type=int, help='batch size')
     parser.add_argument('--dataset', default='seaweed', type=str, help='the name for dataset')
     parser.add_argument('--dataroot', default=data_dir, type=str, help='data directory')
@@ -74,15 +74,9 @@ if __name__ == '__main__':
 
     test_acc_list = []
     best_test = 0
+    ads="xx"
+    logdir = os.path.join(args.saveroot, args.dataset, args.model, ads)
 
-    # args.ads = True
-    if not args.ads:
-        ads = 'combined-327'
-        logdir = os.path.join(args.saveroot, args.dataset, args.model, ads)
-    else:
-        ads = 'cd'
-        logdir = os.path.join(args.saveroot, args.dataset, args.model, ads)
-    set_logging_defaults(logdir, args)
     logger = logging.getLogger('main')
     logname = os.path.join(logdir, 'log.csv')
 
@@ -103,10 +97,10 @@ if __name__ == '__main__':
     path = os.path.join(logdir, f'{args.model}_test_acc_{ads}.txt')
     with open(path, 'w') as f:
         f.write("Test Acc\n")
-        # 遍历四个列表并写入文件
+     
         for acc in test_acc_list:
             f.write(f"{acc}\n")
-    print("数据已保存到 test_acc.txt")
+    print("data is saved at test_acc.txt")
 
     x1 = range(0, args.epoch)
     y1 = test_acc_list
