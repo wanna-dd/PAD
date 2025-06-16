@@ -25,25 +25,24 @@ def set_logging_defaults(logdir, args):
 
 
 def get_terminal_size():
-    if os.name == 'nt':  # Windows系统
-        return 24, 80  # 默认值（24行和80列）
+    if os.name == 'nt':  #
+        return 24, 80  
     else:
         try:
-            # 在类Unix系统上获取终端大小
+           
             size = os.popen('stty size', 'r').read().split()
             return int(size[0]), int(size[1])
         except ValueError:
-            return 24, 80  # 如果出错，则返回默认值
+            return 24, 80 
 
 
-# 获取终端大小 # term_width = 80
 term_height, term_width = get_terminal_size()
 TOTAL_BAR_LENGTH = 160.
 last_time = time.time()
 begin_time = last_time
 
 
-# 其他代码逻辑...
+
 def progress_bar(current, total, msg=None):
     global last_time, begin_time
     if current == 0:
@@ -82,9 +81,9 @@ def progress_bar(current, total, msg=None):
     sys.stdout.write(' %d/%d ' % (current+1, total))
 
     if current < total - 1:
-        sys.stdout.write('\r')  # 更新进度条
+        sys.stdout.write('\r')  
     else:
-        sys.stdout.write('\n')  # 进度条结束，换行
+        sys.stdout.write('\n') 
     sys.stdout.flush()
 
 
