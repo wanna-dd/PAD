@@ -24,7 +24,6 @@ class Shrinkage(nn.Module):
         x = self.fc(x)
         # calculate threshold
         x = torch.mul(average, x)
-        # 增加维度 C W --> C W 1
         x = x.unsqueeze(2)
         # soft thresholding
         sub = x_abs - x
@@ -79,7 +78,6 @@ class RSNet(nn.Module):
         self.layer1 = self._make_layer(block, 64, num_block[0], 2)
         self.layer2 = self._make_layer(block, 128, num_block[1], 2)
         self.avg_pool = nn.AdaptiveAvgPool1d(1)
-        # 这里修改
         self.fc = nn.Linear(128 * block.expansion, num_classes)
 
     def _make_layer(self, block, out_channels, num_blocks, stride):
