@@ -14,8 +14,8 @@ def setup_seed(seed, deterministic=False):
     torch.manual_seed(seed)  # CPU
     torch.cuda.manual_seed(seed)  # GPU
     torch.cuda.manual_seed_all(seed)  # All GPU
-    os.environ['PYTHONHASHSEED'] = str(seed)  # 禁止hash随机化
-    if deterministic:  # 以下操作涉及cudnn，一般为False，也可以设置为True，尝试一下。
+    os.environ['PYTHONHASHSEED'] = str(seed)  
+    if deterministic:  
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
     os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
@@ -36,17 +36,17 @@ class PairBatchSampler(Sampler):
                 offset = k*self.batch_size
                 batch_indices = indices[offset:offset+self.batch_size]
             else:
-                # 从数据集中随机抽取batch_size个样本索引
+               
                 batch_indices = random.sample(range(len(self.dataset)),
                                               self.batch_size)
 
             pair_indices = []
             for idx in batch_indices:
-                # 获取样本的类别
+               
                 y = self.dataset.get_class(idx).item()
                 if not self.dataset.classwise_indices[y]:
                     raise ValueError("No samples available for class {y}")
-                # 从同类样本中随机选择一个样本
+              
                 pair_indices.append(random.choice(self.dataset.classwise_indices[y]))
 
             yield batch_indices + pair_indices
@@ -67,15 +67,15 @@ class DatasetWrapper(Dataset):
         else:
             self.indices = indices
 
-        # 创建一个defaultdict，用于存储每个类的样本索引列表
+       
         self.classwise_indices = defaultdict(list)
         for i in range(len(self)):
-            y = self.base_dataset[self.indices[i]][1]  # 获取目标值
-            self.classwise_indices[y.item()].append(i)  # .item() 将单元素张量转换为 Python 标量
+            y = self.base_dataset[self.indices[i]][1]  
+            self.classwise_indices[y.item()].append(i) 
         self.num_classes = max(self.classwise_indices.keys()) + 1
         # print("Classwise Indices:", dict(self.classwise_indices))
 
-        # 重写__getitem__方法
+      
     def __getitem__(self, i):
         return self.base_dataset[self.indices[i]]
 
@@ -184,10 +184,9 @@ def read_excel(path):
 def load_dataset(root, sample='default', **kwargs):
     setup_seed(42)
     # Dataset
-    # train_val_dataset_dir = os.path.join(root, "train_320_25.10.xlsx")
-    # test_dataset_dir = os.path.join(root, "val_80_25.10.xlsx")
-    train_val_dataset_dir = os.path.join(root, "train_320_0616_比较预处理.xlsx")
-    test_dataset_dir = os.path.join(root, "val_80_0616_比较预处理.xlsx")
+ 
+    train_val_dataset_dir = os.path.join(root, "train.xlsx")
+    test_dataset_dir = os.path.join(root, "val.xlsx")
 
     trainset_data, trainset_targets = read_excel(train_val_dataset_dir)
     valset_data, valset_targets = read_excel(test_dataset_dir)
@@ -219,11 +218,10 @@ def load_dataset(root, sample='default', **kwargs):
 def load_test_dataset(root, row_index=None, **kwargs):
     setup_seed(42)
     # Dataset
-    # test_dataset_dir = os.path.join(root, "test_100_25.10.xlsx")  # 25.10.24
-    test_dataset_dir = os.path.join(root, "test_100_0616_比较预处理.xlsx")  # 06.16.25
+    test_dataset_dir = os.path.join(root, "test.xlsx")  
     testset_data, testset_targets = read_excel(test_dataset_dir)
 
-    # 如果指定了 num_rows，则只选择前 num_rows 行
+
     if row_index is not None:
         testset_data = testset_data[row_index:row_index+1]
         testset_targets = testset_targets[row_index:row_index+1]
