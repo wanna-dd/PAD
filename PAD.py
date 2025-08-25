@@ -281,7 +281,7 @@ if __name__ == '__main__':
         start_epoch = checkpoint['epoch'] + 1
         rng_state = checkpoint['rng_state']
         torch.set_rng_state(rng_state)
-        print('加载 epoch {} 成功！'.format(start_epoch - 1))
+        print('uploading epoch {} successfully！'.format(start_epoch - 1))
         print('-----------------------------')
     else:
         start_epoch = 0
@@ -347,3 +347,4 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(os.path.join(logdir, f'{args.model}_ccuracy_loss_{ads}.jpg'))
     plt.show()
+
