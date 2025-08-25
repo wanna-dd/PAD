@@ -315,6 +315,7 @@ if __name__ == '__main__':
     df.to_excel(path, index=False)
     print(f"Data is saved at {path}")
 
+    #Plotting
     x1 = range(start_epoch, args.epoch)
     x2 = range(start_epoch, args.epoch)
     y1 = train_loss_list
@@ -347,4 +348,5 @@ if __name__ == '__main__':
     plt.tight_layout()
     plt.savefig(os.path.join(logdir, f'{args.model}_ccuracy_loss_{ads}.jpg'))
     plt.show()
+
 
