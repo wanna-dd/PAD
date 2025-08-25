@@ -20,5 +20,5 @@ We recommend using the Anaconda Python distribution, which is available for Wind
 
 **Data**
 ----------------------------------------------------------------------------------------------------------------------------------------
-The public data (Raman spectra for bacteria tesk) in the experiment are available at **https://github.com/csho33/bacteria-ID.**
-Other data for resonabale use can be available from the correspondence author.
+The public Raman spectral dadaset for bacteria task in the experiment are available at **https://github.com/csho33/bacteria-ID.**
+Other datasets are not publicly available due to  agreements related to commerical senstivity, but can be made available from the correspondence author upon resonable request and with appropriate approval.
