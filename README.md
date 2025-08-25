@@ -1,6 +1,6 @@
 **PAD**
 ---------------------------------------------------------------------------------------------------------------------
-This repo contains demonstrations of using PAD to adaptively optimize  spectral information. 
+This repo contains demonstrations of using PAD to adaptively optimize one-dimensional spectral information, such as Uv-vis, Raman, IR spectra. 
 This repository is adapted from the codebase used to produce the results in the paper "Adaptive Feedback Cross-loop for Preserving and Robust Spectral Information Optimization without 
 Spectral Processing in Few-shot Learning".
 
@@ -20,4 +20,4 @@ We recommend using the Anaconda Python distribution, which is available for Wind
 
 **Data**
 ----------------------------------------------------------------------------------------------------------------------------------------
-The public data for the experiments are available at **https://github.com/csho33/ bacteria-ID**
+The public data for the experiments are available at **https://github.com/csho33/ bacteria-ID.**
