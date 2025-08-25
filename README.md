@@ -20,4 +20,4 @@ We recommend using the Anaconda Python distribution, which is available for Wind
 
 **Data**
 ----------------------------------------------------------------------------------------------------------------------------------------
-The public data for the experiments are available at **https://github.com/csho33/ bacteria-ID.**
+The public data for the experiments are available at **https://github.com/csho33/bacteria-ID.**
