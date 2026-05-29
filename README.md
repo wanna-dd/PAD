@@ -3,17 +3,11 @@
 <p align="center">
   <a href="https://doi.org/10.1088/1361-6501/aded2a">
     <img src="https://img.shields.io/badge/Paper-Measurement%20Science%20and%20Technology-blue">
-  </a>
-  <img src="https://img.shields.io/badge/Python-3.8.13-green">
-  <img src="https://img.shields.io/badge/PyTorch-2.3.1-orange">
-  <img src="https://img.shields.io/badge/CUDA-12.0.151-brightgreen">
-  <img src="https://img.shields.io/badge/Task-Few--shot%20Spectral%20Learning-purple">
+    <img src="https://img.shields.io/badge/Task-Few--shot%20Spectral%20Learning-purple">
 </p>
 
-<p align="center">
-  <b>Official PyTorch implementation of PAD</b><br>
-  Adaptive Feedback Cross-loop for Preserving and Robust Spectral Information Optimization without Spectral Processing in Few-shot Learning
-</p>
+This repository is adapted from the codebase used to produce the results in the paper **Adaptive Feedback Cross-loop for Preserving and Robust Spectral Information Optimization without 
+Spectral Processing in Few-shot Learning** published in **Measurement Science and Technology (2025)** at https://doi.org/10.1088/1361-6501/aded2a.
 
 ---
 
@@ -33,27 +27,18 @@ Key features:
 
 ---
 
-## 🧠 Method Overview
+## ⚙️ Requirements
+The code in this repo has been tested with the following software versions:
 
-PAD decomposes the original one-dimensional spectrum into two complementary spectral views:
+**Python** 3.8.13
 
-- an odd-index spectral branch;
-- an even-index spectral branch.
+**PyTorch** 2.3.1
 
-These two branches are used to construct an adaptive feedback cross-loop, where the model learns from both current and delayed spectral representations. Through self-knowledge distillation, PAD encourages the two branches to exchange reliable spectral information while preserving discriminative spectral patterns.
+**Cuda** 12.0.151
 
-The core idea is to improve model robustness and generalization when only limited labeled spectral samples are available.
+**Pycharm** 2024.1.4
 
----
-
-## 📌 Paper
-
-This repository provides the official implementation of the following paper:
-
-> **Adaptive feedback cross-loop for preserving and robust spectral information optimization without spectral processing in few-shot learning**  
-> Yuduan Lin, Yalu Cai, Haotian Chen, Yitao Cai, Zhibiao Lin, Honghao Cai, Hui Ni  
-> *Measurement Science and Technology*, 2025, 36, 075503.  
-> DOI: [10.1088/1361-6501/aded2a](https://doi.org/10.1088/1361-6501/aded2a)
+We recommend using the Anaconda Python distribution, which is available for Windows, MacOS, and Linux.
 
 ---
 
@@ -67,46 +52,12 @@ PAD/
 │   ├── MobileNetV3.py       # Lightweight convolutional backbone
 │   ├── ResNet.py            # Residual convolutional backbone
 │   └── __init__.py          # Model loader
-├── Datasets.py              # Dataset loading and preprocessing
+├── Datasets.py              # Dataset loading
 ├── Train_PAD.py             # Training script for PAD
-├── Test.py                  # Testing and checkpoint evaluation
+├── Test.py                  # Testing evaluation
 ├── Utils.py                 # Logging and utility functions
 ├── Visualization.py         # GradCAM-based visualization
 └── README.md
-```
-
----
-
-## ⚙️ Requirements
-
-The code was developed and tested under the following environment:
-
-| Package | Version  |
-| ------- | -------- |
-| Python  | 3.8.13   |
-| PyTorch | 2.3.1    |
-| CUDA    | 12.0.151 |
-| PyCharm | 2024.1.4 |
-
-You can install the main dependencies using:
-
-```bash
-pip install torch==2.3.1 torchvision torchaudio
-pip install numpy pandas scikit-learn matplotlib scipy tqdm
-```
-
-Alternatively, you can create a `requirements.txt` file:
-
-```text
-torch==2.3.1
-torchvision
-torchaudio
-numpy
-pandas
-scikit-learn
-matplotlib
-scipy
-tqdm
 ```
 
 ---
@@ -125,18 +76,10 @@ If you find this repository useful for your research, please cite our paper:
   url={https://api.semanticscholar.org/CorpusID:280124913}
 }
 ```
-
----
-
-## ⭐ Acknowledgement
-
-We thank the open-source community and the providers of public spectral datasets for supporting reproducible research in spectroscopy, chemometrics, and deep learning. The public Raman spectral dadaset for bacteria task in the experiment are available at **https://github.com/csho33/bacteria-ID.**
-
 ---
 
 ## 📄 License
 
 This project is released for academic research purposes. Please cite the paper if you use this repository in your research.
 
-For commercial use or redistribution, please contact the authors.
-
+For commercial use or redistribution, please contact the authors. The public Raman spectral dadaset for bacteria task in the experiment are available at https://github.com/csho33/bacteria-ID.
