@@ -71,5 +71,72 @@ PAD/
 ├── Train_PAD.py             # Training script for PAD
 ├── Test.py                  # Testing and checkpoint evaluation
 ├── Utils.py                 # Logging and utility functions
-├── Visualization.py         # GradCAM
+├── Visualization.py         # GradCAM-based visualization
 └── README.md
+```
+
+---
+
+## ⚙️ Requirements
+
+The code was developed and tested under the following environment:
+
+| Package | Version  |
+| ------- | -------- |
+| Python  | 3.8.13   |
+| PyTorch | 2.3.1    |
+| CUDA    | 12.0.151 |
+| PyCharm | 2024.1.4 |
+
+You can install the main dependencies using:
+
+```bash
+pip install torch==2.3.1 torchvision torchaudio
+pip install numpy pandas scikit-learn matplotlib scipy tqdm
+```
+
+Alternatively, you can create a `requirements.txt` file:
+
+```text
+torch==2.3.1
+torchvision
+torchaudio
+numpy
+pandas
+scikit-learn
+matplotlib
+scipy
+tqdm
+```
+
+---
+
+## 📖 Citation
+
+If you find this repository useful for your research, please cite our paper:
+
+```bibtex
+@article{Lin2025AdaptiveFC,
+  title={Adaptive feedback cross-loop for preserving and robust spectral information optimization without spectral processing in few-shot learning},
+  author={Yuduan Lin and Yalu Cai and Haotian Chen and Yitao Cai and Zhibiao Lin and Honghao Cai and Hui Ni},
+  journal={Measurement Science and Technology},
+  year={2025},
+  volume={36},
+  url={https://api.semanticscholar.org/CorpusID:280124913}
+}
+```
+
+---
+
+## ⭐ Acknowledgement
+
+We thank the open-source community and the providers of public spectral datasets for supporting reproducible research in spectroscopy, chemometrics, and deep learning.
+
+---
+
+## 📄 License
+
+This project is released for academic research purposes. Please cite the paper if you use this repository in your research.
+
+For commercial use or redistribution, please contact the authors.
+
