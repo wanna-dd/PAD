@@ -130,7 +130,7 @@ If you find this repository useful for your research, please cite our paper:
 
 ## ⭐ Acknowledgement
 
-We thank the open-source community and the providers of public spectral datasets for supporting reproducible research in spectroscopy, chemometrics, and deep learning.
+We thank the open-source community and the providers of public spectral datasets for supporting reproducible research in spectroscopy, chemometrics, and deep learning. The public Raman spectral dadaset for bacteria task in the experiment are available at **https://github.com/csho33/bacteria-ID.**
 
 ---
 
