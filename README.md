@@ -1,10 +1,6 @@
 # PAD: Adaptive Feedback Cross-loop Self-KD for Robust Few-shot Spectral Learning
 
 <p align="center">
-  <img src="assets/pad_banner.png" width="850">
-</p>
-
-<p align="center">
   <a href="https://doi.org/10.1088/1361-6501/aded2a">
     <img src="https://img.shields.io/badge/Paper-Measurement%20Science%20and%20Technology-blue">
   </a>
@@ -38,10 +34,6 @@ Key features:
 ---
 
 ## 🧠 Method Overview
-
-<p align="center">
-  <img src="assets/pad_framework.png" width="850">
-</p>
 
 PAD decomposes the original one-dimensional spectrum into two complementary spectral views:
 
